@@ -32,7 +32,7 @@ namespace KetoRecipeApp.Data
             return new ApplicationDbContext();
         }
 
-        public DbSet<Note> Notes { get; set; }  //
+       public DbSet<Recipe> Notes { get; set; }  
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder
@@ -50,7 +50,7 @@ namespace KetoRecipeApp.Data
     {
         public IdentityUserLoginConfiguration()
         {
-            HasKey(IdentityUserLogin => iul.UserId);
+            HasKey(iul => iul.UserId);
         }
     }
 
