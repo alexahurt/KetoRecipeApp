@@ -57,6 +57,15 @@
     <Compile Include="Comments.cs" />
     <Compile Include="FavoriteRecipes.cs" />
     <Compile Include="IdentityModels.cs" />
+    <Compile Include="Migrations\202111042217446_InitialCreate.cs" />
+    <Compile Include="Migrations\202111042217446_InitialCreate.Designer.cs">
+      <DependentUpon>202111042217446_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111042244289_InitialMigration.cs" />
+    <Compile Include="Migrations\202111042244289_InitialMigration.Designer.cs">
+      <DependentUpon>202111042244289_InitialMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="NutritionProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recipe.cs" />
@@ -64,6 +73,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202111042217446_InitialCreate.resx">
+      <DependentUpon>202111042217446_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111042244289_InitialMigration.resx">
+      <DependentUpon>202111042244289_InitialMigration.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
