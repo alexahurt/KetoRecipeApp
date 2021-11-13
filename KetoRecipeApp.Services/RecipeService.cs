@@ -17,39 +17,81 @@ namespace KetoRecipeApp.Services
 
         public bool CreateRecipe(RecipeCreate model)
         {
-            var entity =
+            var recipe =
                 new Recipe()
                 {
                     Id = model.Id,
                     Title = model.Title,
                     Instructions = model.Instructions,
                     Ingredients = model.Ingredients,
+                    Category = model.Category,
+                    MealType = model.MealType,
+                    NutritionProfile = model.NutritionProfile,
+                    Source = model.Source,
+                    IsCleanKeto = model.IsCleanKeto
                 };
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.Notes.Add(entity);
+                ctx.Recipes.Add(recipe);    //recipes issue
                 return ctx.SaveChanges() == 1;
             }
         }
 
-        public IEnumerable<RecipeListItem> GetRecipes()
+        public IEnumerable<RecipeListItem> GetAllRecipes()
         {
-            using (var context = new ApplicationDbContext())
+            using (var context = ApplicationDbContext.Create())
             {
-                var query = 
-                    context
-                    .Recipes
-                    .Include(r => r.Recipe)
-                    .Where(r => r.UserId == _userId)
-                    .Select(r => new RecipeListItem
-                    {
-                        Id = r.Id,
-                        UserId = r.UserId,
-                        Title = r.Title,
-                        Source = r.Source
-                    });
-                return query.ToArray();
+                var query = context.Recipes.Select(recipe => new RecipeListItem() //Why is Recipes underlined + why isn't select method activating
+                {
+                    Id = recipe.Id,
+                    Title = recipe.Title,
+                    Source = recipe.Source,
+                });
+                    
+                return query.ToArray(); //Why isn't ToArray method activating?
 
+            }
+        }
+
+        public RecipeDetail GetRecipeById(int id)
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                var recipe = context.Recipes.Find(id);  //Recipes issue
+
+                if (recipe == null)
+                {
+                    return null;
+                }
+
+                return new RecipeDetail
+                {
+                    Id = recipe.Id,
+                    Title = recipe.Title,
+                    Category = recipe.Category,
+                    MealType = recipe.MealType,
+                    Instructions = recipe.Instructions,
+                    Ingredients = recipe.Ingredients,
+                    NutritionProfile = recipe.NutritionProfile,
+                    Source = recipe.Source,
+                    IsCleanKeto = recipe.IsCleanKeto
+                };
+            }
+        }
+
+        public bool DeleteRecipe(int id)
+        {
+            using (var context = ApplicationDbContext.Create())
+            {
+                var recipe = context.Recipes.Find(id);  //Recipes issue
+
+                if (recipe == null)
+                {
+                    return false;
+                }
+
+                context.Recipes.Remove(recipe); //Recipes issue
+                return context.SaveChanges() == 1;
             }
         }
     }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace KetoRecipeApp.Data
 {
-    public class Comments
+    public class Comment
     {
         [Key]
         public int Id { get; set; }

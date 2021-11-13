@@ -45,9 +45,26 @@ namespace KetoRecipeApp.Data
         [Required]
         public string Ingredients { get; set; }
         [Required]
-        public virtual NutritionProfile NutritionProfile { get; set; }
+        public IEnumerable<NutritionProfile> NutritionProfile { get; set; }
         public string Source { get; set; }
         public bool IsCleanKeto { get; set; }
 
+        public virtual List<Comment> Comments { get; set; }
+
+    }
+
+    public class NutritionProfile
+    {
+        public int NutritionProfileId { get; set; }
+
+        public double Fat { get; set; }
+
+        public double Protein { get; set; }
+
+        public double TotalCarbs { get; set; }
+
+        public double NetCarbs { get; set; }
+
+        public double Calories { get; set; }
     }
 }

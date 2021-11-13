@@ -23,7 +23,7 @@ namespace KetoRecipeApp.Models
         [Required]
         public string Ingredients { get; set; }
         [Required]
-        public virtual NutritionProfile NutritionProfile { get; set; }
+        public IEnumerable<NutritionProfile> NutritionProfile { get; set; }
         public string Source { get; set; }
         public bool IsCleanKeto { get; set; }
     }
