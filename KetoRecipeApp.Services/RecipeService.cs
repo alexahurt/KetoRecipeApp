@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using KetoRecipeApp.Data;
 using KetoRecipeApp.Models;
 
@@ -36,21 +34,20 @@ namespace KetoRecipeApp.Services
 
         public IEnumerable<RecipeListItem> GetRecipes()
         {
-            using (var ctx = new ApplicationDbContext())
+            using (var context = new ApplicationDbContext())
             {
-                var query =
-                    ctx
-                        .Recipes
-                        .Where(e => e.OwnerId == _userId)
-                        .Select(
-                            e =>
-                                new RecipeListItem
-                                {
-                                    Id = e.Id,
-                                    Title = e.Title,
-                                    Source = e.Source
-                                }
-                        );
+                var query = 
+                    context
+                    .Recipes
+                    .Include(r => r.Recipe)
+                    .Where(r => r.UserId == _userId)
+                    .Select(r => new RecipeListItem
+                    {
+                        Id = r.Id,
+                        UserId = r.UserId,
+                        Title = r.Title,
+                        Source = r.Source
+                    });
                 return query.ToArray();
 
             }

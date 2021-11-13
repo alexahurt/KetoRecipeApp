@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using KetoRecipeApp.Models;
+using KetoRecipeApp.Services;
+using Microsoft.AspNet.Identity;
 
 namespace KetoRecipeApp.WebMVC.Controllers
 {
@@ -13,13 +15,11 @@ namespace KetoRecipeApp.WebMVC.Controllers
         // GET: Recipe
         public ActionResult Index()
         {
-            var model = new RecipeListItem[0];
-            return View(model);
-        }
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new RecipeService(userId);
+            var model = service.GetRecipes();
 
-        public ActionResult Create()
-        {
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -28,9 +28,15 @@ namespace KetoRecipeApp.WebMVC.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                return View(model);
             }
-            return View(model);
+
+            var userId = Guid.Parse(User.Identity.GetUserId());
+            var service = new RecipeService(userId);
+
+            service.CreateRecipe(model);
+
+            return RedirectToAction("Index");
         }
     }
 }

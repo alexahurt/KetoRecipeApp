@@ -6,11 +6,12 @@ using System.Threading.Tasks;
 
 namespace KetoRecipeApp.Models
 {
-    public class RecipeListItem
+    public class FavoriteRecipesDetail
     {
-        public int UserId { get; set; }
         public int Id { get; set; }
-        public string Title { get; set; }
+        public Guid UserId { get; set; }
+        public int RecipeId { get; set; }
+        public string RecipeTitle { get; set; }
         public string Source { get; set; }
     }
 }

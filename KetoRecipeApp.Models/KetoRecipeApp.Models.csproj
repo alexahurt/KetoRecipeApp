@@ -54,8 +54,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommentCreate.cs" />
+    <Compile Include="CommentDetail.cs" />
+    <Compile Include="CommentEdit.cs" />
+    <Compile Include="CommentListItem.cs" />
+    <Compile Include="FavoriteRecipesCreate.cs" />
+    <Compile Include="FavoriteRecipesDetail.cs" />
+    <Compile Include="FavoriteRecipesEdit.cs" />
+    <Compile Include="NutritionProfileCreate.cs" />
+    <Compile Include="NutritionProfileDetail.cs" />
+    <Compile Include="NutritionProfileEdit.cs" />
+    <Compile Include="NutritionProfileListItem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RecipeCreate.cs" />
+    <Compile Include="RecipeDetail.cs" />
     <Compile Include="RecipeListItem.cs" />
   </ItemGroup>
   <ItemGroup>
