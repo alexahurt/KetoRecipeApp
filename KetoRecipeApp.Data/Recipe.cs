@@ -37,6 +37,8 @@ namespace KetoRecipeApp.Data
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
+        [Required]
+        public Guid UserId { get; set; }
         public _Category Category { get; set; }
         [Required]
         public _MealType MealType { get; set; }

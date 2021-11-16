@@ -79,6 +79,28 @@ namespace KetoRecipeApp.Services
             }
         }
 
+        public bool UpdateRecipe(RecipeEdit model)
+        {
+            using(var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Recipes
+                        .Single(e => e.Id == model.RecipeId && e.UserId == _userId);
+                entity.Id = model.Id;
+                entity.Title = model.Title;
+                entity.Category = model.Category;
+                entity.MealType = model.MealType;
+                entity.Instructions = model.Instructions;
+                entity.Ingredients = model.Ingredients;
+                entity.NutritionProfile = model.NutritionProfile;
+                entity.Source = model.Source;
+                entity.IsCleanKeto = model.IsCleanKeto;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
         public bool DeleteRecipe(int id)
         {
             using (var context = ApplicationDbContext.Create())

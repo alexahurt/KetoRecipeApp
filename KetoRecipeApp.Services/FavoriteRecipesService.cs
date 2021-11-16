@@ -40,7 +40,7 @@ namespace KetoRecipeApp.Services
                 var query =
                     ctx
                     .FavoriteRecipes  //favorite recipes issue
-                    .Include(s => s.Podcast)  //include method not activating
+                    // .Include(e => e.Recipe)
                     .Where(e => e.UserId == _userId)
                     .Select(e =>
                     new FavoriteRecipesListItem
@@ -48,9 +48,8 @@ namespace KetoRecipeApp.Services
                         Id = e.Id,
                         UserId = e.UserId,
                         RecipeId = e.RecipeId,
-                        Title = e.Podcast.Title,
                     });
-                return query.ToArray(); //toarray not activating
+                return query.ToArray(); 
             }
         }
 
@@ -60,8 +59,8 @@ namespace KetoRecipeApp.Services
             {
                 var favoriterecipes =
                     ctx
-                    .FavoriteRecipes //favoriterecipes issue
-                    .Include(s => s.Recipe)
+                    .FavoriteRecipes 
+                   // .Include(s => s.Recipe)
                     .SingleOrDefault(e => e.Id == id && e.UserId == _userId);
 
                 if (favoriterecipes == null)

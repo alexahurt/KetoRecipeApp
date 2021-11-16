@@ -16,9 +16,6 @@ namespace KetoRecipeApp.Data
         [Required]
         public Guid UserId { get; set; }
 
-        [ForeignKey(nameof(Recipe))]
-        public int RecipeId { get; set; }
-
         [Required]
         [Range(0, 5)]
         public double Rating { get; set; }
@@ -26,6 +23,9 @@ namespace KetoRecipeApp.Data
         [Required]
         public string Text { get; set; }
 
+        [ForeignKey(nameof(Recipe))]
+        public int RecipeId { get; set; }
+        public virtual Recipe Recipe { get; set; }
     }
 }
 

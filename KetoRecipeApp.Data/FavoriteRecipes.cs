@@ -18,6 +18,11 @@ namespace KetoRecipeApp.Data
 
         [ForeignKey(nameof(Recipe))]
         public int RecipeId { get; set; }
+        public virtual Recipe Recipe { get; set; }
+
+        public string RecipeTitle { get; set; }
+        
+        public string Source { get; set; }
 
     }
 }
