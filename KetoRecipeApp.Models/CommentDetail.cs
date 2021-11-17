@@ -8,7 +8,7 @@ namespace KetoRecipeApp.Models
 {
     public class CommentDetail
     {
-        public int Id { get; set; }
+        public int CommentId { get; set; }
 
         public Guid UserId { get; set; }
 

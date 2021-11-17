@@ -43,7 +43,7 @@ namespace KetoRecipeApp.Services
             {
                 var query = context.Recipes.Select(recipe => new RecipeListItem() //Why is Recipes underlined + why isn't select method activating
                 {
-                    Id = recipe.Id,
+                    RecipeId = recipe.Id,
                     Title = recipe.Title,
                     Source = recipe.Source,
                 });
@@ -66,7 +66,7 @@ namespace KetoRecipeApp.Services
 
                 return new RecipeDetail
                 {
-                    Id = recipe.Id,
+                    RecipeId = recipe.Id,
                     Title = recipe.Title,
                     Category = recipe.Category,
                     MealType = recipe.MealType,
@@ -87,7 +87,7 @@ namespace KetoRecipeApp.Services
                     ctx
                         .Recipes
                         .Single(e => e.Id == model.RecipeId && e.UserId == _userId);
-                entity.Id = model.Id;
+                entity.Id = model.RecipeId;
                 entity.Title = model.Title;
                 entity.Category = model.Category;
                 entity.MealType = model.MealType;

@@ -54,7 +54,7 @@ namespace KetoRecipeApp.Services
                             e =>
                                 new CommentListItem
                                 {
-                                    Id = e.Id,
+                                    CommentId = e.CommentId,
                                     Rating = e.Rating,
                                     Text = e.Text
                                 }
@@ -70,7 +70,7 @@ namespace KetoRecipeApp.Services
                 var comment =
                     ctx
                         .Comments  //comments issue
-                        .SingleOrDefault(e => e.Id == model.Id && e.UserId == _userId);  //SingleOrDefault not activating
+                        .SingleOrDefault(e => e.Id == model.CommentId && e.UserId == _userId);  //SingleOrDefault not activating
 
                 if (comment == null)
                 {

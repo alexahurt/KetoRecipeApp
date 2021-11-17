@@ -13,6 +13,8 @@ namespace KetoRecipeApp.Data
         [Key]
         public int Id { get; set; }
 
+        public int CommentId { get; set; }
+
         [Required]
         public Guid UserId { get; set; }
 

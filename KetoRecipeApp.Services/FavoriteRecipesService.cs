@@ -28,7 +28,7 @@ namespace KetoRecipeApp.Services
 
             using (var ctx = new ApplicationDbContext())
             {
-                ctx.FavoriteRecipes.Add(entity);  //why the favoriterecips issue and .add not activating?
+                ctx.FavoriteRecipes.Add(entity);  
                 return ctx.SaveChanges() == 1;
             }
         }
@@ -45,7 +45,7 @@ namespace KetoRecipeApp.Services
                     .Select(e =>
                     new FavoriteRecipesListItem
                     {
-                        Id = e.Id,
+                        FavoriteRecipesId = e.Id,
                         UserId = e.UserId,
                         RecipeId = e.RecipeId,
                     });
@@ -88,7 +88,7 @@ namespace KetoRecipeApp.Services
                 var entity =
                     ctx
                     .FavoriteRecipes
-                    .SingleOrDefault(e => e.Id == model.Id && e.UserId == _userId);
+                    .SingleOrDefault(e => e.Id == model.FavoriteRecipesId && e.UserId == _userId);
 
                 if (entity == null)
                 {

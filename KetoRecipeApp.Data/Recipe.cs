@@ -10,7 +10,7 @@ namespace KetoRecipeApp.Data
 
     public enum _Category
     {
-        American,
+        American =1,
         Italian,
         Asian,
         African,
@@ -25,7 +25,7 @@ namespace KetoRecipeApp.Data
 
     public enum _MealType
     {
-        Breakfast,
+        Breakfast =1,
         Lunch,
         Dinner,
         Snack,

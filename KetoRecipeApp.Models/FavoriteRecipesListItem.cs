@@ -8,7 +8,7 @@ namespace KetoRecipeApp.Models
 {
     public class FavoriteRecipesListItem
     {
-        public int Id { get; set; }
+        public int FavoriteRecipesId { get; set; }
         public Guid UserId { get; set; }
         public int RecipeId { get; set; }
         public string Title { get; set; }

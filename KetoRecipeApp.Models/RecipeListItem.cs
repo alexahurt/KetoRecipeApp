@@ -8,7 +8,7 @@ namespace KetoRecipeApp.Models
 {
     public class RecipeListItem
     {
-        public int Id { get; set; }
+        public int RecipeId { get; set; }
         public string Title { get; set; }
         public string Source { get; set; }
     }
