@@ -24,6 +24,12 @@ namespace KetoRecipeApp.WebMVC.Controllers
         //Add method here VVVV
         //GET
 
+        public ActionResult Create()
+        {
+            var model = new FavoriteRecipesCreate();
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(FavoriteRecipesCreate model)
@@ -59,7 +65,7 @@ namespace KetoRecipeApp.WebMVC.Controllers
             var model =
                 new FavoriteRecipes
                 {
-                    Id = detail.Id,
+                    Id = detail.FavoriteRecipesId,
                     RecipeTitle = detail.RecipeTitle,
                     Source = detail.Source,
                     UserId = detail.UserId
@@ -70,18 +76,18 @@ namespace KetoRecipeApp.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int id, RecipeEdit model)
+        public ActionResult Edit(int id, FavoriteRecipesEdit model)
         {
             if (!ModelState.IsValid) return View(model);
 
-            if (model.RecipeId != id)
+            if (model.FavoriteRecipesId != id)
             {
                 ModelState.AddModelError("", "Id Mismatch");
                 return View(model);
             }
             var service = CreateFavoriteRecipesService();
 
-            if (service.UpdateRecipe(model))
+            if (service.UpdateFavoriteRecipes(model))
             {
                 TempData["SaveResult"] = "Your Recipe was updated.";
                 return RedirectToAction("Index");
@@ -94,7 +100,7 @@ namespace KetoRecipeApp.WebMVC.Controllers
         public ActionResult Delete(int id)
         {
             var svc = CreateFavoriteRecipesService();
-            var model = svc.GetRecipeById(id);
+            var model = svc.GetFavoriteRecipesById(id);
 
             return View(model);
         }
@@ -105,15 +111,15 @@ namespace KetoRecipeApp.WebMVC.Controllers
         public ActionResult DeleteRecipe(int id)
         {
             var service = CreateFavoriteRecipesService();
-            service.DeleteRecipe(id);
+            service.DeleteFavoriteRecipes(id);
             TempData["SaveResult"] = "Your recipe was deleted";
             return RedirectToAction("Index");
         }
 
-        private RecipeService CreateFavoriteRecipesService()
+        private FavoriteRecipesService CreateFavoriteRecipesService()
         {
             var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new RecipeService(userId);
+            var service = new FavoriteRecipesService(userId);
             return service;
         }
     }

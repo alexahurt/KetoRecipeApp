@@ -69,6 +69,10 @@
     <Compile Include="Migrations\202111131929177_add-migration FixRecipeIdTypo.Designer.cs">
       <DependentUpon>202111131929177_add-migration FixRecipeIdTypo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202111170200412_AddCommentModel.cs" />
+    <Compile Include="Migrations\202111170200412_AddCommentModel.Designer.cs">
+      <DependentUpon>202111170200412_AddCommentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Recipe.cs" />
@@ -86,6 +90,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202111131929177_add-migration FixRecipeIdTypo.resx">
       <DependentUpon>202111131929177_add-migration FixRecipeIdTypo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111170200412_AddCommentModel.resx">
+      <DependentUpon>202111170200412_AddCommentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

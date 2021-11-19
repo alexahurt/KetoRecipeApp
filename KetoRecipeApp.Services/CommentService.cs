@@ -63,6 +63,25 @@ namespace KetoRecipeApp.Services
             }
         }
 
+        public CommentListItem GetCommentsById(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var comment =
+                    ctx
+                        .Comments
+                        .Single(e => e.CommentId == id);
+                var model = new CommentListItem
+                {
+                    CommentId = comment.CommentId,
+                    Rating = comment.Rating,
+                    Text = comment.Text
+                };
+          
+                return model;    
+            }
+        }
+
         public bool UpdateComment(CommentEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -76,7 +95,7 @@ namespace KetoRecipeApp.Services
                 {
                     return false;
                 }
-
+                
                 comment.Rating = model.Rating;
                 comment.Text = model.Text;
 

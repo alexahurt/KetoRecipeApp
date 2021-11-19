@@ -21,6 +21,12 @@ namespace KetoRecipeApp.WebMVC.Controllers
         //Add method here VVVV
         //GET
 
+        public ActionResult Create()
+        {
+            var model = new CommentCreate();
+            return View(model);
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(CommentCreate model)
@@ -52,7 +58,7 @@ namespace KetoRecipeApp.WebMVC.Controllers
         public ActionResult Edit(int id)
         {
             var service = CreateCommentService();
-            var detail = service.GetCommentsByRecipeId(id);
+            var detail = service.GetCommentsById(id); 
             var model =
                 new CommentEdit
                 {

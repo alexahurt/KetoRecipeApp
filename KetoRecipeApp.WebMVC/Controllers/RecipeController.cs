@@ -23,12 +23,18 @@ namespace KetoRecipeApp.WebMVC.Controllers
         }
         //Add method here VVVV
         //GET
+        public ActionResult Create()
+        {
+            var model = new RecipeCreate();
+            return View(model);
+        }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create(RecipeCreate model)
         {
             if (ModelState.IsValid) return View(model);
+            
 
             var service = CreateRecipeService();
             
@@ -36,12 +42,11 @@ namespace KetoRecipeApp.WebMVC.Controllers
             {
                 TempData["SaveResult"] = "Your recipe was created.";
                 return RedirectToAction("Index");
-            };
+            }
 
             ModelState.AddModelError("", "Recipe could not be created.");
 
             return View(model);
-
         }
 
         public ActionResult Details(int id)
