@@ -26,7 +26,6 @@ namespace KetoRecipeApp.Services
                     Ingredients = model.Ingredients,
                     Category = model.Category,
                     MealType = model.MealType,
-                    NutritionProfile = model.NutritionProfile,
                     Source = model.Source,
                     IsCleanKeto = model.IsCleanKeto
                 };
@@ -72,7 +71,7 @@ namespace KetoRecipeApp.Services
                     MealType = recipe.MealType,
                     Instructions = recipe.Instructions,
                     Ingredients = recipe.Ingredients,
-                    NutritionProfile = recipe.NutritionProfile,
+                    //NutritionProfile = recipe.NutritionProfile,
                     Source = recipe.Source,
                     IsCleanKeto = recipe.IsCleanKeto
                 };
@@ -93,7 +92,10 @@ namespace KetoRecipeApp.Services
                 entity.MealType = model.MealType;
                 entity.Instructions = model.Instructions;
                 entity.Ingredients = model.Ingredients;
-                entity.NutritionProfile = model.NutritionProfile;
+                entity.Protein = model.Protein;
+                entity.TotalCarbs = model.TotalCarbs;
+                entity.NetCarbs = model.NetCarbs;
+                entity.Calories = model.Calories;
                 entity.Source = model.Source;
                 entity.IsCleanKeto = model.IsCleanKeto;
 

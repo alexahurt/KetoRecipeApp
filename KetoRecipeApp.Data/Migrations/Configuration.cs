@@ -10,7 +10,6 @@ namespace KetoRecipeApp.Data.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "KetoRecipeApp.Data.ApplicationDbContext";
         }
 
         protected override void Seed(KetoRecipeApp.Data.ApplicationDbContext context)

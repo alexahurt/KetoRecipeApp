@@ -57,21 +57,9 @@
     <Compile Include="Comment.cs" />
     <Compile Include="FavoriteRecipes.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202111042217446_InitialCreate.cs" />
-    <Compile Include="Migrations\202111042217446_InitialCreate.Designer.cs">
-      <DependentUpon>202111042217446_InitialCreate.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111042244289_InitialMigration.cs" />
-    <Compile Include="Migrations\202111042244289_InitialMigration.Designer.cs">
-      <DependentUpon>202111042244289_InitialMigration.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111131929177_add-migration FixRecipeIdTypo.cs" />
-    <Compile Include="Migrations\202111131929177_add-migration FixRecipeIdTypo.Designer.cs">
-      <DependentUpon>202111131929177_add-migration FixRecipeIdTypo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202111170200412_AddCommentModel.cs" />
-    <Compile Include="Migrations\202111170200412_AddCommentModel.Designer.cs">
-      <DependentUpon>202111170200412_AddCommentModel.cs</DependentUpon>
+    <Compile Include="Migrations\202111190243572_UpdateDataLayer.cs" />
+    <Compile Include="Migrations\202111190243572_UpdateDataLayer.Designer.cs">
+      <DependentUpon>202111190243572_UpdateDataLayer.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,17 +70,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111042217446_InitialCreate.resx">
-      <DependentUpon>202111042217446_InitialCreate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111042244289_InitialMigration.resx">
-      <DependentUpon>202111042244289_InitialMigration.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111131929177_add-migration FixRecipeIdTypo.resx">
-      <DependentUpon>202111131929177_add-migration FixRecipeIdTypo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202111170200412_AddCommentModel.resx">
-      <DependentUpon>202111170200412_AddCommentModel.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111190243572_UpdateDataLayer.resx">
+      <DependentUpon>202111190243572_UpdateDataLayer.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

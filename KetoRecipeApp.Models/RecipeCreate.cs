@@ -23,7 +23,13 @@ namespace KetoRecipeApp.Models
         [Required]
         public string Ingredients { get; set; }
         [Required]
-        public IEnumerable<NutritionProfile> NutritionProfile { get; set; }
+        public double Protein { get; set; }
+        [Required]
+        public double TotalCarbs { get; set; }
+        [Required]
+        public double NetCarbs { get; set; }
+        [Required]
+        public double Calories { get; set; }
         public string Source { get; set; }
         public bool IsCleanKeto { get; set; }
     }

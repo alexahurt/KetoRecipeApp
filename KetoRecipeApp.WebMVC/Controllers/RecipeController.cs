@@ -70,7 +70,10 @@ namespace KetoRecipeApp.WebMVC.Controllers
                     MealType = detail.MealType,
                     Instructions = detail.Instructions,
                     Ingredients = detail.Ingredients,
-                    NutritionProfile = detail.NutritionProfile,
+                    Protein = detail.Protein,
+                    TotalCarbs = detail.TotalCarbs,
+                    NetCarbs = detail.NetCarbs,
+                    Calories = detail.Calories,
                     Source = detail.Source,
                     IsCleanKeto = detail.IsCleanKeto
                 };

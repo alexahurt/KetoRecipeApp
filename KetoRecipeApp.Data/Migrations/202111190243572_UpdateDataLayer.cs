@@ -3,40 +3,58 @@ namespace KetoRecipeApp.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class InitialCreate : DbMigration
+    public partial class UpdateDataLayer : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.Comment",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        CommentId = c.Int(nullable: false),
+                        UserId = c.Guid(nullable: false),
+                        Rating = c.Double(nullable: false),
+                        Text = c.String(nullable: false),
+                        RecipeId = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Recipe", t => t.RecipeId, cascadeDelete: true)
+                .Index(t => t.RecipeId);
+            
             CreateTable(
                 "dbo.Recipe",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
                         Title = c.String(nullable: false),
+                        UserId = c.Guid(nullable: false),
                         Category = c.Int(nullable: false),
                         MealType = c.Int(nullable: false),
                         Instructions = c.String(nullable: false),
                         Ingredients = c.String(nullable: false),
-                        Source = c.String(),
-                        IsCleanKeto = c.Boolean(nullable: false),
-                        NutritionProfile_Id = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.NutritionProfile", t => t.NutritionProfile_Id, cascadeDelete: true)
-                .Index(t => t.NutritionProfile_Id);
-            
-            CreateTable(
-                "dbo.NutritionProfile",
-                c => new
-                    {
-                        Id = c.Int(nullable: false, identity: true),
-                        Fat = c.Double(nullable: false),
                         Protein = c.Double(nullable: false),
                         TotalCarbs = c.Double(nullable: false),
                         NetCarbs = c.Double(nullable: false),
                         Calories = c.Double(nullable: false),
+                        Source = c.String(),
+                        IsCleanKeto = c.Boolean(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.FavoriteRecipes",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        UserId = c.Guid(nullable: false),
+                        RecipeId = c.Int(nullable: false),
+                        RecipeTitle = c.String(),
+                        Source = c.String(),
+                    })
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Recipe", t => t.RecipeId, cascadeDelete: true)
+                .Index(t => t.RecipeId);
             
             CreateTable(
                 "dbo.IdentityRole",
@@ -116,19 +134,22 @@ namespace KetoRecipeApp.Data.Migrations
             DropForeignKey("dbo.IdentityUserLogin", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserClaim", "ApplicationUser_Id", "dbo.ApplicationUser");
             DropForeignKey("dbo.IdentityUserRole", "IdentityRole_Id", "dbo.IdentityRole");
-            DropForeignKey("dbo.Recipe", "NutritionProfile_Id", "dbo.NutritionProfile");
+            DropForeignKey("dbo.FavoriteRecipes", "RecipeId", "dbo.Recipe");
+            DropForeignKey("dbo.Comment", "RecipeId", "dbo.Recipe");
             DropIndex("dbo.IdentityUserLogin", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserClaim", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "ApplicationUser_Id" });
             DropIndex("dbo.IdentityUserRole", new[] { "IdentityRole_Id" });
-            DropIndex("dbo.Recipe", new[] { "NutritionProfile_Id" });
+            DropIndex("dbo.FavoriteRecipes", new[] { "RecipeId" });
+            DropIndex("dbo.Comment", new[] { "RecipeId" });
             DropTable("dbo.IdentityUserLogin");
             DropTable("dbo.IdentityUserClaim");
             DropTable("dbo.ApplicationUser");
             DropTable("dbo.IdentityUserRole");
             DropTable("dbo.IdentityRole");
-            DropTable("dbo.NutritionProfile");
+            DropTable("dbo.FavoriteRecipes");
             DropTable("dbo.Recipe");
+            DropTable("dbo.Comment");
         }
     }
 }
