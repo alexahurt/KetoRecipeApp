@@ -11,15 +11,7 @@ namespace KetoRecipeApp.WebMVC.Controllers
 {
     public class CommentController : Controller
     {
-        // GET: Comment
-        public ActionResult Index()
-        {
-            var userId = Guid.Parse(User.Identity.GetUserId());
-            var service = new CommentService(userId);
-            return View(service);
-        }
-        //Add method here VVVV
-        //GET
+
 
         public ActionResult Create()
         {
@@ -31,18 +23,15 @@ namespace KetoRecipeApp.WebMVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(CommentCreate model)
         {
-            if (ModelState.IsValid) return View(model);
-
-            var service = CreateCommentService();
-
-            if (service.CreateComment(model))
+            if (ModelState.IsValid)
             {
-                TempData["SaveResult"] = "Your comment was posted.";
-                return RedirectToAction("Index");
-            };
+                var service = CreateCommentService();
+                if (service.CreateComment(model))
+                    TempData["SaveResult"] = "Your comment was posted.";
+                return RedirectToAction("Details", "Recipe", new { id = model.RecipeId });
+            }
 
             ModelState.AddModelError("", "Comment could not be posted.");
-
             return View(model);
 
         }

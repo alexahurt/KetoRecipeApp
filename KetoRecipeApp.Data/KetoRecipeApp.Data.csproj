@@ -57,9 +57,13 @@
     <Compile Include="Comment.cs" />
     <Compile Include="FavoriteRecipes.cs" />
     <Compile Include="IdentityModels.cs" />
-    <Compile Include="Migrations\202111190243572_UpdateDataLayer.cs" />
-    <Compile Include="Migrations\202111190243572_UpdateDataLayer.Designer.cs">
-      <DependentUpon>202111190243572_UpdateDataLayer.cs</DependentUpon>
+    <Compile Include="Migrations\202111222253565_InitialCreate.cs" />
+    <Compile Include="Migrations\202111222253565_InitialCreate.Designer.cs">
+      <DependentUpon>202111222253565_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202111222259438_FinalMigration.cs" />
+    <Compile Include="Migrations\202111222259438_FinalMigration.Designer.cs">
+      <DependentUpon>202111222259438_FinalMigration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -70,8 +74,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202111190243572_UpdateDataLayer.resx">
-      <DependentUpon>202111190243572_UpdateDataLayer.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202111222253565_InitialCreate.resx">
+      <DependentUpon>202111222253565_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202111222259438_FinalMigration.resx">
+      <DependentUpon>202111222259438_FinalMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

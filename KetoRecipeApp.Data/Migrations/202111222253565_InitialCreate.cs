@@ -3,7 +3,7 @@ namespace KetoRecipeApp.Data.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class UpdateDataLayer : DbMigration
+    public partial class InitialCreate : DbMigration
     {
         public override void Up()
         {
@@ -33,10 +33,10 @@ namespace KetoRecipeApp.Data.Migrations
                         MealType = c.Int(nullable: false),
                         Instructions = c.String(nullable: false),
                         Ingredients = c.String(nullable: false),
-                        Protein = c.Double(nullable: false),
-                        TotalCarbs = c.Double(nullable: false),
-                        NetCarbs = c.Double(nullable: false),
-                        Calories = c.Double(nullable: false),
+                        Protein = c.Int(nullable: false),
+                        TotalCarbs = c.Int(nullable: false),
+                        NetCarbs = c.Int(nullable: false),
+                        Calories = c.Int(nullable: false),
                         Source = c.String(),
                         IsCleanKeto = c.Boolean(nullable: false),
                     })

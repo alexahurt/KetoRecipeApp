@@ -31,10 +31,10 @@ namespace KetoRecipeApp.Services
                 var comment =
                     new Comment()
                     {
-                        UserId = _userId,
+                        //UserId = _userId,
                         Rating = model.Rating,
                         Text = model.Text,
-                        //RecipeId = model.RecipeId
+                        RecipeId = model.RecipeId
                     };
 
                 ctx.Comments.Add(comment);    //issues with Comments

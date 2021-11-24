@@ -15,14 +15,16 @@ namespace KetoRecipeApp.Models
         public _MealType MealType { get; set; }
         public string Instructions { get; set; }
         public string Ingredients { get; set; }
-        public double Protein { get; set; }
+        public int Protein { get; set; }
 
-        public double TotalCarbs { get; set; }
+        public int TotalCarbs { get; set; }
 
-        public double NetCarbs { get; set; }
+        public int NetCarbs { get; set; }
 
-        public double Calories { get; set; }
+        public int Calories { get; set; }
         public string Source { get; set; }
         public bool IsCleanKeto { get; set; }
+
+        public  IEnumerable<CommentListItem> Comments { get; set; }
     }
 }

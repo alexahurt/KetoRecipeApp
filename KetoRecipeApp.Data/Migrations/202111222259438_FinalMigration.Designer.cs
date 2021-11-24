@@ -7,13 +7,13 @@ namespace KetoRecipeApp.Data.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.0-30225")]
-    public sealed partial class UpdateDataLayer : IMigrationMetadata
+    public sealed partial class FinalMigration : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(UpdateDataLayer));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(FinalMigration));
         
         string IMigrationMetadata.Id
         {
-            get { return "202111190243572_UpdateDataLayer"; }
+            get { return "202111222259438_FinalMigration"; }
         }
         
         string IMigrationMetadata.Source

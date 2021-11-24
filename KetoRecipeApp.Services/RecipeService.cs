@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using KetoRecipeApp.Data;
 using KetoRecipeApp.Models;
@@ -21,11 +22,16 @@ namespace KetoRecipeApp.Services
                 new Recipe()
                 {
                     Id = model.Id,
+                    UserId = _userId,
                     Title = model.Title,
                     Instructions = model.Instructions,
                     Ingredients = model.Ingredients,
                     Category = model.Category,
                     MealType = model.MealType,
+                    Protein = model.Protein,
+                    TotalCarbs = model.TotalCarbs,
+                    NetCarbs = model.NetCarbs,
+                    Calories = model.Calories,
                     Source = model.Source,
                     IsCleanKeto = model.IsCleanKeto
                 };
@@ -40,15 +46,14 @@ namespace KetoRecipeApp.Services
         {
             using (var context = ApplicationDbContext.Create())
             {
-                var query = context.Recipes.Select(recipe => new RecipeListItem() //Why is Recipes underlined + why isn't select method activating
+                var query = context.Recipes.Select(recipe => new RecipeListItem() 
                 {
                     RecipeId = recipe.Id,
                     Title = recipe.Title,
                     Source = recipe.Source,
                 });
                     
-                return query.ToArray(); //Why isn't ToArray method activating?
-
+                return query.ToArray(); 
             }
         }
 
@@ -56,7 +61,7 @@ namespace KetoRecipeApp.Services
         {
             using (var context = ApplicationDbContext.Create())
             {
-                var recipe = context.Recipes.Find(id);  //Recipes issue
+                var recipe = context.Recipes.Find(id);  
 
                 if (recipe == null)
                 {
@@ -71,10 +76,15 @@ namespace KetoRecipeApp.Services
                     MealType = recipe.MealType,
                     Instructions = recipe.Instructions,
                     Ingredients = recipe.Ingredients,
-                    //NutritionProfile = recipe.NutritionProfile,
                     Source = recipe.Source,
-                    IsCleanKeto = recipe.IsCleanKeto
-                };
+                    IsCleanKeto = recipe.IsCleanKeto,
+                    Comments = recipe.Comments.Select(comment => new CommentListItem()
+                    {
+                        CommentId = comment.CommentId,
+                        Rating = comment.Rating,
+                        Text = comment.Text
+                    })
+                };           
             }
         }
 
@@ -82,12 +92,11 @@ namespace KetoRecipeApp.Services
         {
             using(var ctx = new ApplicationDbContext())
             {
-                var entity =
-                    ctx
-                        .Recipes
-                        .Single(e => e.Id == model.RecipeId && e.UserId == _userId);
+                
+                
+                var entity = ctx.Recipes.SingleOrDefault(e => e.Id == model.Id && e.UserId == _userId);
+
                 entity.Id = model.RecipeId;
-                entity.Title = model.Title;
                 entity.Category = model.Category;
                 entity.MealType = model.MealType;
                 entity.Instructions = model.Instructions;
@@ -118,5 +127,7 @@ namespace KetoRecipeApp.Services
                 return context.SaveChanges() == 1;
             }
         }
+
+        
     }
 }

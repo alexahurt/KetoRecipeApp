@@ -242,7 +242,6 @@
     <Content Include="Views\Recipe\Edit.cshtml" />
     <Content Include="Views\Recipe\Delete.cshtml" />
     <Content Include="Views\Shared\DisplayTemplates\DateTimeOffset.cshtml" />
-    <Content Include="Views\Recipe\Create.cshtml" />
     <Content Include="Views\Comment\Index.cshtml" />
     <Content Include="Views\Comment\Create.cshtml" />
     <Content Include="Views\Comment\Details.cshtml" />
@@ -251,6 +250,7 @@
     <Content Include="Views\FavoriteRecipes\Create.cshtml" />
     <Content Include="Views\FavoriteRecipes\Details.cshtml" />
     <Content Include="Views\FavoriteRecipes\Edit.cshtml" />
+    <Content Include="Views\Recipe\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -31,23 +31,22 @@ namespace KetoRecipeApp.WebMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(RecipeCreate model)
-        {
-            if (ModelState.IsValid) return View(model);
-            
-
-            var service = CreateRecipeService();
-            
-            if (service.CreateRecipe(model))
+       public ActionResult Create(RecipeCreate model)
+       {    
+            if (ModelState.IsValid) 
             {
+                var service = CreateRecipeService();
+                if (service.CreateRecipe(model))
                 TempData["SaveResult"] = "Your recipe was created.";
                 return RedirectToAction("Index");
             }
-
+            
             ModelState.AddModelError("", "Recipe could not be created.");
-
             return View(model);
+
         }
+
+
 
         public ActionResult Details(int id)
         {

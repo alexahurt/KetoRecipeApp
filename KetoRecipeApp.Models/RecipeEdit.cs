@@ -9,20 +9,20 @@ namespace KetoRecipeApp.Models
 {
     public class RecipeEdit
     {
+        public int Id { get; set; }
         public int RecipeId { get; set; }
-        public Guid OwnerId { get; set; }
         public string Title { get; set; }
         public _Category Category { get; set; }
         public _MealType MealType { get; set; }
         public string Instructions { get; set; }
         public string Ingredients { get; set; }
-        public double Protein { get; set; }
+        public int Protein { get; set; }
 
-        public double TotalCarbs { get; set; }
+        public int TotalCarbs { get; set; }
 
-        public double NetCarbs { get; set; }
+        public int NetCarbs { get; set; }
 
-        public double Calories { get; set; }
+        public int Calories { get; set; }
         public string Source { get; set; }
         public bool IsCleanKeto { get; set; }
     }
