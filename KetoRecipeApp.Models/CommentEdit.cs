@@ -10,6 +10,7 @@ namespace KetoRecipeApp.Models
     public class CommentEdit
     {
         [Required]
+        [Display(Name = "Comment ID")]
         public int CommentId { get; set; }
 
         [Required]

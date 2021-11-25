@@ -17,6 +17,7 @@ namespace KetoRecipeApp.Models
         public int Id { get; set; }
         public _Category Category { get; set; }
         [Required]
+        [Display(Name = "Meal Type")]
         public _MealType MealType { get; set; }
         [Required]
         public string Instructions { get; set; }
@@ -25,12 +26,15 @@ namespace KetoRecipeApp.Models
         [Required]
         public int Protein { get; set; }
         [Required]
+        [Display(Name = "Total Carbs")]
         public int TotalCarbs { get; set; }
         [Required]
+        [Display(Name = "Net Carbs")]
         public int NetCarbs { get; set; }
         [Required]
         public int Calories { get; set; }
         public string Source { get; set; }
+        [Display(Name = "Is this dish clean keto?")]
         public bool IsCleanKeto { get; set; }
     }
 }

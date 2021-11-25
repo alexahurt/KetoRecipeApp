@@ -71,7 +71,7 @@ namespace KetoRecipeApp.Services
                 return new RecipeDetail
                 {
                     RecipeId = recipe.Id,
-                    Title = recipe.Title,
+                    RecipeTitle = recipe.Title,
                     Category = recipe.Category,
                     MealType = recipe.MealType,
                     Instructions = recipe.Instructions,

@@ -64,7 +64,7 @@ namespace KetoRecipeApp.WebMVC.Controllers
                 new RecipeEdit
                 {
                     RecipeId = detail.RecipeId,
-                    Title = detail.Title,
+                    Title = detail.RecipeTitle,
                     Category = detail.Category,
                     MealType = detail.MealType,
                     Instructions = detail.Instructions,

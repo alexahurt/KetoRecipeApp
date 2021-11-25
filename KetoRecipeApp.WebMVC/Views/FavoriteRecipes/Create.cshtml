@@ -4,35 +4,35 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<h2 class="text-center mt-4">Favorite Recipes</h2>
 
 
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-    <div class="form-horizontal">
-        <h4>FavoriteRecipesCreate</h4>
+    <div class=" form-horizontal">
+        <h4>Add Recipe to Favorites</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.RecipeId, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
+        <div class=" form-group">
+
+            <div class=" col-md-10">
                 @Html.EditorFor(model => model.RecipeId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.RecipeId, "", new { @class = "text-danger" })
+                @Html.ValidationMessageFor(model => model.RecipeId, "Recipe ID", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Add to favorites" class=" btn btn-outline-light" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Index", null, htmlAttributes: new { @class = "nav-link" })
 </div>
 
 @section Scripts {

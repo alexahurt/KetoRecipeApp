@@ -10,6 +10,7 @@ namespace KetoRecipeApp.Models
     public class FavoriteRecipesEdit
     {
         [Required]
+        [Display(Name = "FavoriteRecipesID")]
         public int FavoriteRecipesId { get; set; }
     }
 }

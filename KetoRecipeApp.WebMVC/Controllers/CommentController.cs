@@ -36,14 +36,6 @@ namespace KetoRecipeApp.WebMVC.Controllers
 
         }
 
-        public ActionResult Details(int id)
-        {
-            var svc = CreateCommentService();
-            var model = svc.GetCommentsByRecipeId(id);
-
-            return View(model);
-        }
-
         public ActionResult Edit(int id)
         {
             var service = CreateCommentService();
